@@ -1,13 +1,13 @@
-const router = require('express').Router();
-const { addPage } = require('../views/');
+const router = require("express").Router();
+const { addPage } = require("../views");
 
-router.get('/', (req, res, next) => {
-  res.send('get home path');
+router.get("/", async (req, res, next) => {
+  res.send("get home path");
 });
-router.post('/', (req, res, next) => {
+router.post("/", async (req, res, next) => {
   res.json(req.body);
 });
-router.get('/add', (req, res, next) => {
+router.get("/add", async (req, res, next) => {
   res.send(addPage());
 });
 
