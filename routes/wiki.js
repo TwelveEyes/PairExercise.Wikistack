@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const { Page, User } = require("../models");
-const { addPage, wikiPage } = require("../views");
+const { addPage, main, wikiPage } = require("../views");
 
 router.get("/", async (req, res, next) => {
-  res.send("get home path");
+  const query = await Page.findAll();
+  res.send(main(query));
 });
 
 router.post("/", async (req, res, next) => {
@@ -17,7 +18,7 @@ router.post("/", async (req, res, next) => {
 
     // })
 
-    res.redirect("/");
+    res.redirect(`/wiki/${page.slug}`);
   } catch (error) {
     next(error);
   }
