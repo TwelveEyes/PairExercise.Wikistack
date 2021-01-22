@@ -21,6 +21,14 @@ const User = db.define("user", {
   },
 });
 
+Page.beforeValidate((pageInstance) => {
+  pageInstance.slug = slugify(pageInstance.title);
+});
+
+function slugify(string) {
+  return string.replace(/\s+/g, "_").replace(/\W/g, "");
+}
+
 module.exports = {
   db,
   Page,
