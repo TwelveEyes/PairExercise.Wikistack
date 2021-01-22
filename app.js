@@ -12,7 +12,7 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res, next) => {
+app.get("/", async (req, res, next) => {
   try {
     res.send(layout(""));
   } catch (error) {
