@@ -33,7 +33,7 @@ router.get("/:slug", async (req, res, next) => {
       where: { slug: req.params.slug },
     });
 
-    res.json(query);
+    res.send(wikiPage(query));
   } catch (error) {
     next(error);
   }
